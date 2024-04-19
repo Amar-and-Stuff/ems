@@ -44,8 +44,9 @@
 <body>
     <nav>
         <span>Employee Management System</span>
-        <a th:href="@{/employee/{id}(id=${emp.getId()})}">Profile</a>
-        <a th:href="@{/employee/logout}">Logout</a>
+        <a th:href="@{/hr/{id}(id=${emp.getId()})}">Profile</a>
+        <a th:href="@{/hr/add_employee}">Add Employee</a>
+        <a th:href="@{/hr/logout}">Logout</a>
     </nav>
     <div class="info">
         <p th:text="|Employee ID: ${emp.getId()}|" />

@@ -1,6 +1,41 @@
-<nav>
-    Employee Management System
-    <a th:href="@{/employee/login}">Employee</a>
-    <a th:href="@{/hr/login}">Hr</a>
-    <a th:href="@{/manager/login}">Manager</a>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-right: 1px solid #fff;
+        }
+        nav a:last-child {
+            border-right: none;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span>Employee Management System</span>
+        <a th:href="@{/employee/login}">Employee</a>
+        <a th:href="@{/hr/login}">HR</a>
+        <a th:href="@{/manager/login}">Manager</a>
+    </nav>
+</body>
+</html>

@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Employee Registration</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
         .container {
-            max-width: 400px;
+            max-width: 500px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -32,9 +32,15 @@
             border: 1px solid #ccc;
             border-radius: 3px;
         }
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
         .btn {
             display: inline-block;
-            padding: 8px 16px;
+            padding: 10px 20px;
             background-color: #007bff;
             color: #fff;
             text-decoration: none;
@@ -43,43 +49,33 @@
         .btn:hover {
             background-color: #0056b3;
         }
-        nav {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-right: 1px solid #fff;
-        }
-        nav a:last-child {
-            border-right: none;
-        }
-        nav a:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
-    <nav>
-        <span>Employee Management System</span>
-        <a th:href="@{/}">Home</a>
-    </nav>
     <div class="container">
-        <h2>Login</h2>
-        <form action="/login" method="POST">
+        <h2>Employee Registration</h2>
+        <form th:action="@{/hr/submit_employee}" method="POST" enctype="application/x-www-form-urlencoded"> 
             <div class="form-group">
                 <label for="employeeId">Employee ID:</label>
                 <input type="text" id="employeeId" name="employeeId" required>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <div class="form-group">
+                <label for="designation">Designation:</label>
+                <input type="text" id="designation" name="designation" required>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary:</label>
+                <input type="text" id="salary" name="salary" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience (years):</label>
+                <input type="number" id="experience" name="experience" required>
+            </div>
+            <button type="submit" class="btn">Submit</button>
         </form>
     </div>
 </body>
