@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="|emp : ${id}|" />
+    <p th:text="|emp : ${name}|" />
+    <p th:text="|emp : ${designation}|" />
+    <p th:text="|emp : ${salary}|" />
+    <p th:text="|emp : ${exp}|" />
+    <p th:text="|emp : ${emp.getExp()}|" />
+
+</body>
+</html>
