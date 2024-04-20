@@ -1,5 +1,7 @@
 package com.empsys.ems.manager;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,10 +44,13 @@ public class ManagerController {
     String manage(@PathVariable int id,Model model) {
         // Manager manager=managerRepository.getManagerById(id);
         // model.addAttribute("mr",mr);
-        Manager manager=managerRepository.getEmployeeById(id);
-        model.addAttribute(manager);
+        Employee manager=managerRepository.getEmployeeById(id);
+        List<Employee> employees=managerRepository.getEmployeeDataAsList();
+        model.addAttribute("manager",manager);
+        model.addAttribute("data",employees);
         return "manager_templates/management";
     }
+
     @GetMapping("/logout")
     String logout() {
         return "homepage";

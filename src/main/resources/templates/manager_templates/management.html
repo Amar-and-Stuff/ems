@@ -54,8 +54,27 @@
         <a th:href="@{/manager/manage/{id}(id=${manager.getId()})}">Manage</a>
         <a th:href="@{/manager/logout}">Logout</a>
     </nav>
-        <h1>My ArrayList Items</h1>
-        <h1>Hello World</h1>
+    <h1>Manager List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Designation</th>
+                <th>Salary</th>
+                <th>Experience</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="m : ${data}">
+                <td th:text="${m.name}"></td>
+                <td th:text="${m.id}"></td>
+                <td th:text="${m.designation}"></td>
+                <td th:text="${m.salary}"></td>
+                <td th:text="${m.exp}"></td>
+            </tr>
+        </tbody>
+    </table>
     </body>
     </html>
     
