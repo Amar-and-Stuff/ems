@@ -37,4 +37,10 @@ public class ManagerRepository {
         .query(Employee.class)
         .list();
     }
+
+    public void updateEmployeeById(int id, Employee employee) {
+        jdbcClient.sql("UPDATE employees set id=?, name=?, designation=?, salary=?, exp=? where id=?")
+            .params(List.of(employee.getId(),employee.getName(),employee.getDesignation(),employee.getSalary(),employee.getExp(),id))
+            .update();
+    }
 }

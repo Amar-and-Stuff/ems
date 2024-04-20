@@ -3,13 +3,13 @@ package com.empsys.ems.hr;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.empsys.ems.employee.Employee;
-import com.empsys.ems.manager.Manager;
 
 @Controller
 @RequestMapping("/hr")
@@ -42,24 +42,17 @@ public class HRController {
         return "hr_templates/dashboard";
     }
 
-    @PostMapping("/add_employee")
-    String submitEmployee(@RequestParam int id, @RequestParam String name, @RequestParam String designation,
-            @RequestParam int salary, @RequestParam float exp) {
-        // hr added an employee
-        Employee emp;
-        if (designation.equals("Employee")) {
-            emp = new Employee(id, name, designation, salary, exp);
-        } else if (designation.equals("HR")) {
-            emp = new HR(id, name, designation, salary, exp);
-        } else if (designation.equals("manager")) {
-            emp = new Manager(id, name, designation, salary, exp);
-        }
-
+    // Add employee
+    @GetMapping("/add_employee")
+    String addEmployee(Model model) {
+        model.addAttribute("employee",new Employee(0, null, null, 0, 0));
         return "hr_templates/add_employee_template";
     }
 
-    @GetMapping("/add_employee")
-    String addEmployee() {
+    @PostMapping("/add_employee")
+    String submitEmployee(@ModelAttribute Employee employee) { //, @RequestParam int id, @RequestParam String name, @RequestParam String designation,@RequestParam int salary, @RequestParam float exp) {
+        hrRepository.addEmployee(employee);
+
         return "hr_templates/add_employee_template";
     }
 
