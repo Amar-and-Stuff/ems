@@ -20,13 +20,14 @@ public class EmployeeController {
     @GetMapping("/{id}")
     String dashboard(@PathVariable int id, Model model) {
         Employee emp=employeeRepository.getEmployeeById(id);
-        model.addAttribute("id", emp.getID());
-        model.addAttribute("name", emp.getName());
-        model.addAttribute("designation", emp.getDesignation());
-        model.addAttribute("salary", emp.getSalary());
-        model.addAttribute("exp", emp.getExp());
         model.addAttribute("emp", emp);
 
         return "employee_templates/dashboard";
+    }
+
+    @GetMapping("/logout")
+    String logout() {
+        
+        return "homepage";
     }
 }

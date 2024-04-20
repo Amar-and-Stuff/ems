@@ -13,7 +13,7 @@ public Employee(int id, String name, String designation, int salary, float exp) 
     this.salary = salary;
     this.exp = exp;
 }
-public int getID() {
+public int getId() {
     return id;
 }
 
