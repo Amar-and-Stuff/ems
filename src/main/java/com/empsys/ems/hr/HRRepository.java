@@ -1,7 +1,7 @@
 package com.empsys.ems.hr;
 
 // import java.util.ArrayList;
-// import java.util.List;
+import java.util.List;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
@@ -33,7 +33,8 @@ public class HRRepository {
     }
 
     public void addEmployee(Employee employee) {
-        jdbcClient.sql("INSERT INTO employees (id, name, designation, salary, exp) VALUES (:employee.getId(), :employee.getName(), :employee.getDesignation(), employee.getSalary(), employee.get)")
-        .query();
+        jdbcClient.sql("INSERT INTO employees (id, name, designation, salary, exp) VALUES(?, ?, ?, ?, ?)")
+        .params(List.of(employee.getId(),employee.getName(),employee.getDesignation(),employee.getSalary(),employee.getExp()))
+        .update();
     }
 }
