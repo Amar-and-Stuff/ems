@@ -41,20 +41,23 @@
         }
     </style>
 </head>
-<body>
+<body><!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>ArrayList Example</title>
+    </head>
+    <body>
+        
     <nav>
         <span>Employee Management System</span>
         <a th:href="@{/manager/{id}(id=${manager.getId()})}">Profile</a>
         <a th:href="@{/manager/manage/{id}(id=${manager.getId()})}">Manage</a>
         <a th:href="@{/manager/logout}">Logout</a>
     </nav>
-    <div class="info">
-        <p th:text="|Employee ID: ${manager.getId()}|" />
-        <p th:text="|Name: ${manager.getName()}|" />
-        <p th:text="|Designation: ${manager.getDesignation()}|" />
-        <p th:text="|Salary: ${manager.getSalary()}|" />
-        <p th:text="|Experience: ${manager.getExp()} years|" />
-        <p th:text="|Experience: ${manager.getExp()} years|" />
-    </div>
+        <h1>My ArrayList Items</h1>
+        <h1>Hello World</h1>
+    </body>
+    </html>
+    
 </body>
 </html>
