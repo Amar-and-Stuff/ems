@@ -49,12 +49,36 @@
         .btn:hover {
             background-color: #0056b3;
         }
+        nav {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-right: 1px solid #fff;
+        }
+        nav a:last-child {
+            border-right: none;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <span>Employee Management System</span>
+        <a th:href="@{|/hr/${hr_id}|}">Profile</a>
+        <a th:href="@{|/hr/add_employee/${hr_id}|}">Add Employee</a>
+        <a th:href="@{/hr/logout}">Logout</a>
+    </nav>
     <div class="container">
         <h2>Employee Registration</h2>
-        <form th:action="@{/hr/add_employee}" th:object="${employee}" method="post"> 
+        <form th:action="@{|/hr/add_employee/${hr_id}|}" th:object="${employee}" method="post"> 
             <div class="form-group">
                 <label for="employeeId">Employee ID:</label>
                 <input type="text" id="employeeId" name="id" th:field="*{id}" required>
