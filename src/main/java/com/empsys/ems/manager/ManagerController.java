@@ -38,7 +38,7 @@ public class ManagerController {
 
     @GetMapping("/{id}")
     String dashboard(@PathVariable int id,Model model) {
-        Manager manager=managerRepository.getEmployeeById(id);
+        Employee manager=managerRepository.getEmployeeById(id);
         model.addAttribute(manager);
         return "manager_templates/dashboard";
     }

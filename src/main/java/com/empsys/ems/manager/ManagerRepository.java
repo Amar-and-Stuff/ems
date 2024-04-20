@@ -25,10 +25,10 @@ public class ManagerRepository {
     //     return managers.stream().filter(emp->emp.getId()==id).findFirst().get();
     // } 
 
-    public Manager getEmployeeById(int id) {
+    public Employee getEmployeeById(int id) {
         return jdbcClient.sql("SELECT id, name, designation, salary, exp  FROM employees WHERE id=:id")
         .param("id",id)
-        .query(Manager.class)
+        .query(Employee.class)
         .optional().get();
     }
 
