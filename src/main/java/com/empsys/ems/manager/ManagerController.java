@@ -63,7 +63,12 @@ public class ManagerController {
             managerRepository.updateEmployeeById(employee_id, employee);
             return "manager_templates/update_employee";
         }
-
+    @GetMapping("/manage/delete/{manager_id}/")
+    String deleteEmployee(@PathVariable int manager_id,@RequestParam(name="employee_id",required=true) int employee_id,Model model) {
+        managerRepository.deleteEmployeeById(employee_id);
+        model.addAttribute("manager_id", manager_id);
+        return "redirect:/manager/manage/"+manager_id;
+    }
     @GetMapping("/logout")
     String logout() {
         return "homepage";

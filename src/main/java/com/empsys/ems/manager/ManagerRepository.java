@@ -43,4 +43,7 @@ public class ManagerRepository {
             .params(List.of(employee.getId(),employee.getName(),employee.getDesignation(),employee.getSalary(),employee.getExp(),id))
             .update();
     }
+    public void deleteEmployeeById(int id) {
+        jdbcClient.sql("DELETE FROM employees WHERE id=?").param(id).update();
+    }
 }
