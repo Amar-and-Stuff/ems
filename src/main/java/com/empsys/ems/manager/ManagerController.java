@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.empsys.ems.employee.Employee;
 
@@ -72,11 +71,5 @@ public class ManagerController {
     @GetMapping("/logout")
     String logout() {
         return "redirect:/";
-    }
-    
-    @GetMapping("/showall")
-    @ResponseBody
-    List<Employee> showAllEmployees() {
-        return managerRepository.getEmployeeDataAsList();
     }
 }
