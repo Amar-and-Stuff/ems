@@ -3,6 +3,9 @@ package com.empsys.ems.manager;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class ManagerRepository {
     public List<Manager> managers;
     ManagerRepository() {
@@ -14,6 +17,6 @@ public class ManagerRepository {
         managers.add(new Manager(5, "Karthik", "Employee", 1000, 0));
     }   
     public Manager getManagerById(int id) {
-        return managers.stream().filter(emp->emp.getID()==id).findFirst().get();
+        return managers.stream().filter(emp->emp.getId()==id).findFirst().get();
     } 
 }
