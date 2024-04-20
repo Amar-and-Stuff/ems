@@ -1,10 +1,12 @@
 package com.empsys.ems.manager;
 
 // import java.util.ArrayList;
-// import java.util.List;
+import java.util.List;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
+
+import com.empsys.ems.employee.Employee;
 
 @Repository
 public class ManagerRepository {
@@ -23,10 +25,16 @@ public class ManagerRepository {
     //     return managers.stream().filter(emp->emp.getId()==id).findFirst().get();
     // } 
 
-    public Manager getManagerById(int id) {
+    public Manager getEmployeeById(int id) {
         return jdbcClient.sql("SELECT id, name, designation, salary, exp  FROM employees WHERE id=:id")
         .param("id",id)
         .query(Manager.class)
         .optional().get();
+    }
+
+    public List<Employee> getEmployeeDataAsList() {
+        return jdbcClient.sql("SELECT * FROM employees")
+        .query(Employee.class)
+        .list();
     }
 }

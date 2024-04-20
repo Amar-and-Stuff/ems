@@ -6,6 +6,8 @@ package com.empsys.ems.hr;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
+import com.empsys.ems.employee.Employee;
+
 @Repository
 public class HRRepository {
     // private List<HR> hrs;
@@ -23,10 +25,15 @@ public class HRRepository {
     //     return hrs.stream().filter(emp->emp.getId()==id).findFirst().get();
     // }
 
-    public HR getHRById(int id) {
+    public Employee getEmployeeById(int id) {
         return jdbcClient.sql("SELECT id, name, designation, salary, exp  FROM employees WHERE id=:id")
         .param("id",id)
-        .query(HR.class)
+        .query(Employee.class)
         .optional().get();
+    }
+
+    public void addEmployee(Employee employee) {
+        jdbcClient.sql("INSERT INTO employees (id, name, designation, salary, exp) VALUES (:employee.getId(), :employee.getName(), :employee.getDesignation(), employee.getSalary(), employee.get)")
+        .query();
     }
 }

@@ -11,31 +11,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.empsys.ems.employee.Employee;
 import com.empsys.ems.manager.Manager;
 
-
-
 @Controller
 @RequestMapping("/hr")
 public class HRController {
     private HRRepository hrRepository;
+
     public HRController(HRRepository hrRepository) {
         this.hrRepository = hrRepository;
     }
+
     @GetMapping("/login")
-    String employeeLogin() {
-        return "loginpage";
+    String hRLogin() {
+        return "hr_templates/loginpage";
+    }
+
+    @PostMapping("/login")
+    String hRLoginSubmission(@RequestParam int id, @RequestParam String password) {
+        Employee emp = hrRepository.getEmployeeById(id);
+        if (emp.getDesignation().equals("HR")) {
+            return "redirect:/hr/" + emp.getId();
+        }
+        return "hr_templates/loginpage";
     }
 
     @GetMapping("/{id}")
     String dashboard(@PathVariable int id, Model model) {
-        HR emp=hrRepository.getHRById(id);
+        Employee emp = hrRepository.getEmployeeById(id);
         model.addAttribute("emp", emp);
 
         return "hr_templates/dashboard";
     }
 
     @PostMapping("/add_employee")
-    String submitEmployee(@RequestParam int id, @RequestParam String name, @RequestParam String designation, @RequestParam int salary, @RequestParam float exp) {
-        //hr added an employee
+    String submitEmployee(@RequestParam int id, @RequestParam String name, @RequestParam String designation,
+            @RequestParam int salary, @RequestParam float exp) {
+        // hr added an employee
         Employee emp;
         if (designation.equals("Employee")) {
             emp = new Employee(id, name, designation, salary, exp);
@@ -44,7 +54,7 @@ public class HRController {
         } else if (designation.equals("manager")) {
             emp = new Manager(id, name, designation, salary, exp);
         }
-        
+
         return "hr_templates/add_employee_template";
     }
 
@@ -53,11 +63,9 @@ public class HRController {
         return "hr_templates/add_employee_template";
     }
 
-    
-
     @GetMapping("/logout")
     String logout() {
-        
+
         return "homepage";
     }
 }
