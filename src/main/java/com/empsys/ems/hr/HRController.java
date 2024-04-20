@@ -59,6 +59,6 @@ public class HRController {
     @GetMapping("/logout")
     String logout() {
 
-        return "homepage";
+        return "redirect:/";
     }
 }

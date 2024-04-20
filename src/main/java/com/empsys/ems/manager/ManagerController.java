@@ -71,7 +71,7 @@ public class ManagerController {
     }
     @GetMapping("/logout")
     String logout() {
-        return "homepage";
+        return "redirect:/";
     }
     
     @GetMapping("/showall")

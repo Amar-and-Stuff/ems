@@ -42,6 +42,6 @@ public class EmployeeController {
     @GetMapping("/logout")
     String logout() {
 
-        return "homepage";
+        return "redirect:/";
     }
 }
