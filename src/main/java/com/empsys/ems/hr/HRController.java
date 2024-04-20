@@ -38,21 +38,21 @@ public class HRController {
     String dashboard(@PathVariable int id, Model model) {
         Employee emp = hrRepository.getEmployeeById(id);
         model.addAttribute("emp", emp);
-
+        model.addAttribute("hr_id", id);
         return "hr_templates/dashboard";
     }
 
     // Add employee
-    @GetMapping("/add_employee")
-    String addEmployee(Model model) {
+    @GetMapping("/add_employee/{id}")
+    String addEmployee(@PathVariable int id, Model model) {
+        model.addAttribute("hr_id", id);
         model.addAttribute("employee",new Employee(0, null, null, 0, 0));
         return "hr_templates/add_employee_template";
     }
 
-    @PostMapping("/add_employee")
-    String submitEmployee(@ModelAttribute Employee employee) { //, @RequestParam int id, @RequestParam String name, @RequestParam String designation,@RequestParam int salary, @RequestParam float exp) {
+    @PostMapping("/add_employee/{id}")
+    String submitEmployee(@ModelAttribute Employee employee, @PathVariable int id) { //, @RequestParam int id, @RequestParam String name, @RequestParam String designation,@RequestParam int salary, @RequestParam float exp) {
         hrRepository.addEmployee(employee);
-
         return "hr_templates/add_employee_template";
     }
 

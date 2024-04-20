@@ -80,7 +80,7 @@
     </nav>
     <div class="container">
         <h2>Employee Registration</h2>
-        <form th:action="@{|/manager/manage/${manager_id}/${employee_id}|}" th:object="${employee}" method="post"> 
+        <form th:action="@{|/manager/manage/${manager_id}/?employee_id=${employee_id}|}" th:object="${employee}" method="post"> 
             <div class="form-group">
                 <label for="employeeId">Employee ID:</label>
                 <input type="text" id="employeeId" name="id" th:field="*{id}" required>

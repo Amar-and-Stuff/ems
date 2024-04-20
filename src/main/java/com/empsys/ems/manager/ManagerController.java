@@ -51,15 +51,16 @@ public class ManagerController {
         return "manager_templates/management";
     }
 
-    @GetMapping("/manage/{manager_id}/{employee_id}")
-    String updateEmployee(@PathVariable int manager_id, @PathVariable int employee_id, Model model) {
+    @GetMapping("/manage/{manager_id}/")
+    String updateEmployee(@PathVariable int manager_id, @RequestParam(name = "employee_id", required = true) int employee_id, Model model) {
         model.addAttribute("manager_id", manager_id);
         model.addAttribute("employee_id", employee_id);
+        model.addAttribute("employee", managerRepository.getEmployeeById(employee_id));
         return "manager_templates/update_employee";
     }
 
-    @PostMapping("/manage/{manager_id}/{employee_id}")
-        String updateEmployeeSubmisssion(@PathVariable int manager_id, @PathVariable int employee_id,@ModelAttribute Employee employee,  Model model) {
+    @PostMapping("/manage/{manager_id}/")
+        String updateEmployeeSubmisssion(@PathVariable int manager_id, @RequestParam(name = "employee_id", required = true) int employee_id,@ModelAttribute Employee employee,  Model model) {
             managerRepository.updateEmployeeById(employee_id, employee);
             return "manager_templates/update_employee";
         }

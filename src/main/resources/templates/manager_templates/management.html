@@ -72,13 +72,12 @@
                 <td th:text="${m.designation}"></td>
                 <td th:text="${m.salary}"></td>
                 <td th:text="${m.exp}"></td>
-                <td><button><a th:href="/manager/manage/${manager_id}/${m.id}">Edit</a></button></td>
-                <td><button><a th:href="">Delete</a></button></td>
+                <td><button><a th:href="@{|/manager/manage/${manager_id}/?employee_id=${m.id}|}">Edit</a></button></td>
+                <td><button><a th:href="@{/}">Delete</a></button></td>
             </tr>
         </tbody>
     </table>
     </body>
     </html>
-    
 </body>
 </html>
