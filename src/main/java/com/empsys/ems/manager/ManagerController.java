@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,12 +44,25 @@ public class ManagerController {
     }
     @GetMapping("/manage/{id}")
     String manage(@PathVariable int id,Model model) {
-        // Manager manager=managerRepository.getManagerById(id);
-        // model.addAttribute("mr",mr);
-        Manager manager=managerRepository.getEmployeeById(id);
-        model.addAttribute(manager);
+        List<Employee> employees=managerRepository.getEmployeeDataAsList();
+        model.addAttribute("manager_id",id);
+        model.addAttribute("data",employees);
         return "manager_templates/management";
     }
+
+    @GetMapping("/manage/{manager_id}/{employee_id}")
+    String updateEmployee(@PathVariable int manager_id, @PathVariable int employee_id, Model model) {
+        model.addAttribute("manager_id", manager_id);
+        model.addAttribute("employee_id", employee_id);
+        return "manager_templates/update_employee";
+    }
+
+    @PostMapping("/manage/{manager_id}/{employee_id}")
+        String updateEmployeeSubmisssion(@PathVariable int manager_id, @PathVariable int employee_id,@ModelAttribute Employee employee,  Model model) {
+            managerRepository.updateEmployeeById(employee_id, employee);
+            return "manager_templates/update_employee";
+        }
+
     @GetMapping("/logout")
     String logout() {
         return "homepage";
