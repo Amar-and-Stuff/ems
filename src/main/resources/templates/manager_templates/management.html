@@ -50,8 +50,8 @@
         
     <nav>
         <span>Employee Management System</span>
-        <a th:href="@{/manager/{id}(id=${manager.getId()})}">Profile</a>
-        <a th:href="@{/manager/manage/{id}(id=${manager.getId()})}">Manage</a>
+        <a th:href="@{|/manager/${manager_id}|}">Profile</a>
+        <a th:href="@{|/manager/manage/${manager_id}|}">Manage</a>
         <a th:href="@{/manager/logout}">Logout</a>
     </nav>
     <h1>Manager List</h1>
@@ -72,6 +72,8 @@
                 <td th:text="${m.designation}"></td>
                 <td th:text="${m.salary}"></td>
                 <td th:text="${m.exp}"></td>
+                <td><button><a th:href="/manager/manage/${manager_id}/${m.id}">Edit</a></button></td>
+                <td><button><a th:href="">Delete</a></button></td>
             </tr>
         </tbody>
     </table>
