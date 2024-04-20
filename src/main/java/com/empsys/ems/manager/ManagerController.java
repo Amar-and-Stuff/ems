@@ -24,6 +24,14 @@ public class ManagerController {
         model.addAttribute(manager);
         return "/manager_templates/dashboard";
     }
+    @GetMapping("/manage/{id}")
+    String manage(@PathVariable int id,Model model) {
+        // Manager manager=managerRepository.getManagerById(id);
+        // model.addAttribute("mr",mr);
+        Manager manager=managerRepository.getManagerById(id);
+        model.addAttribute(manager);
+        return "/manager_templates/management";
+    }
     @GetMapping("/logout")
     String logout() {
         return "homepage";
