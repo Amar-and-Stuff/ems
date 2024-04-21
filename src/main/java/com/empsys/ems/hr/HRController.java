@@ -26,10 +26,13 @@ public class HRController {
     }
 
     @PostMapping("/login")
-    String hRLoginSubmission(@RequestParam int id, @RequestParam String password) {
+    String hRLoginSubmission(@RequestParam int id, @RequestParam String password,Model model) {
         Employee emp = hrRepository.getEmployeeById(id);
         if (emp.getDesignation().equals("HR")) {
             return "redirect:/hr/" + emp.getId();
+        }
+        else {
+            model.addAttribute("message","You Cannot Login Here");
         }
         return "hr_templates/loginpage";
     }

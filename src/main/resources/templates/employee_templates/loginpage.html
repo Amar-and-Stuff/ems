@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Employee Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,7 +69,7 @@
         <a th:href="@{/}">Home</a>
     </nav>
     <div class="container">
-        <h2>Login</h2>
+        <h2>Employee Login</h2>
         <form th:action="@{/employee/login}" method="post">
             <div class="form-group">
                 <label for="employeeId">Employee ID:</label>
@@ -81,6 +81,7 @@
             </div>
             <button type="submit" class="btn">Login</button>
         </form>
+        <p th:text="${message}"/>
     </div>
 </body>
 </html>

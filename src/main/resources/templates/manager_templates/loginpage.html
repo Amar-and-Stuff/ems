@@ -69,10 +69,10 @@
         <a th:href="@{/}">Home</a>
     </nav>
     <div class="container">
-        <h2>Login</h2>
+        <h2>Manager Login</h2>
         <form th:action="@{/manager/login}" method="post">
             <div class="form-group">
-                <label for="employeeId">Employee ID:</label>
+                <label for="employeeId">Manager ID:</label>
                 <input type="text" id="employeeId" name="id" required>
             </div>
             <div class="form-group">
@@ -81,6 +81,7 @@
             </div>
             <button type="submit" class="btn">Login</button>
         </form>
+        <p th:text="${message}"/>
     </div>
 </body>
 </html>
