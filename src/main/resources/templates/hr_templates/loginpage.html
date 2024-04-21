@@ -47,8 +47,8 @@
         nav {
             background-color: #007bff;
             color: #fff;
-            padding: 10px 0;
-            text-align: center;
+            padding: 10px 30px;
+            text-align: left;
         }
         nav a {
             color: #fff;
@@ -62,11 +62,17 @@
         nav a:hover {
             background-color: #0056b3;
         }
+        span {
+            font-size:20px;
+        }
+        a{
+            font-size:20px;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <span>Employee Management System</span>
+        <span><b>Employee Management System</b></span>
         <a th:href="@{/}">Home</a>
     </nav>
     <div class="container">
