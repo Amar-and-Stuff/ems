@@ -24,10 +24,13 @@ public class EmployeeController {
     }
 
     @PostMapping("/login")
-    String employeeLoginSubmission(@RequestParam int id, @RequestParam String password) {
+    String employeeLoginSubmission(@RequestParam int id, @RequestParam String password,Model model) {
         Employee emp = employeeRepository.getEmployeeById(id);
         if (emp.getDesignation().equals("Employee")) {
             return "redirect:/employee/"+emp.getId();
+        }
+        else {
+            model.addAttribute("message","You Cannot Login Here");
         }
         return "employee_templates/loginpage";
     }

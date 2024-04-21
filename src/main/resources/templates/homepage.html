@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management System</title>
+    <title style="font-size:20px">Employee Management System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,13 +13,14 @@
         nav {
             background-color: #007bff;
             color: #fff;
-            padding: 10px 0;
-            text-align: center;
+            padding: 10px 30px;
+            text-align: left;
         }
         nav a {
             color: #fff;
             text-decoration: none;
             padding: 10px 20px;
+            margin-right:0px;
             border-right: 1px solid #fff;
         }
         nav a:last-child {
@@ -28,11 +29,17 @@
         nav a:hover {
             background-color: #0056b3;
         }
+        a {
+            font-size:20px
+        }
+        span {
+            font-size:20px;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <span>Employee Management System</span>
+        <span><b>Employee Management System</b></span>
         <a th:href="@{/employee/login}">Employee</a>
         <a th:href="@{/hr/login}">HR</a>
         <a th:href="@{/manager/login}">Manager</a>

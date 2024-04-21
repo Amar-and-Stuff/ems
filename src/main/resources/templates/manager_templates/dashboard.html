@@ -7,12 +7,20 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding:0;
         }
         p {
             margin-bottom: 10px;
             font-size: 16px;
             color: #333;
+        }
+        button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            color:white;
         }
         .info {
             background-color: #f4f4f4;
@@ -20,13 +28,17 @@
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-        }
-        nav {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
+            display:flex;
+            flex-direction:column;
+            width:100%;
+            align-items:center;
+            box-sizing: border-box;
+                }
+            nav {
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 10px 30px;
+              }
         nav a {
             color: #fff;
             text-decoration: none;
@@ -46,15 +58,16 @@
         <span>Employee Management System</span>
         <a th:href="@{/manager/{id}(id=${manager.getId()})}">Profile</a>
         <a th:href="@{/manager/manage/{id}(id=${manager.getId()})}">Manage</a>
-        <a th:href="@{/manager/logout}">Logout</a>
     </nav>
     <div class="info">
+        <img th:src="@{/employee-icon-free-vector.jpg}" th:width="150" th:height="150"/>
         <p th:text="|Employee ID: ${manager.getId()}|" />
         <p th:text="|Name: ${manager.getName()}|" />
         <p th:text="|Designation: ${manager.getDesignation()}|" />
         <p th:text="|Salary: ${manager.getSalary()}|" />
         <p th:text="|Experience: ${manager.getExp()} years|" />
         <p th:text="|Experience: ${manager.getExp()} years|" />
+        <button><a th:href="@{/manager/logout}">Logout</a></button>
     </div>
 </body>
 </html>

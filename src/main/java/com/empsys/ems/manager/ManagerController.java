@@ -27,10 +27,13 @@ public class ManagerController {
     }
 
     @PostMapping("/login")
-    String hRLoginSubmission(@RequestParam int id, @RequestParam String password) {
+    String hRLoginSubmission(@RequestParam int id, @RequestParam String password,Model model) {
         Employee emp = managerRepository.getEmployeeById(id);
         if (emp.getDesignation().equals("Manager")) {
             return "redirect:/manager/" + emp.getId();
+        }
+        else {
+            model.addAttribute("message","You Cannot Login Here");
         }
         return "manager_templates/loginpage";
     }
@@ -38,7 +41,7 @@ public class ManagerController {
     @GetMapping("/{id}")
     String dashboard(@PathVariable int id,Model model) {
         Employee manager=managerRepository.getEmployeeById(id);
-        model.addAttribute(manager);
+        model.addAttribute("manager",manager);
         return "manager_templates/dashboard";
     }
     @GetMapping("/manage/{id}")

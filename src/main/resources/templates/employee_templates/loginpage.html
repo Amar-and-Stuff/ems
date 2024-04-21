@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Employee Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,6 +20,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .form-group {
+            margin-right:20px;
             margin-bottom: 20px;
         }
         .form-group label {
@@ -38,7 +39,7 @@
             background-color: #007bff;
             color: #fff;
             text-decoration: none;
-            border-radius: 3px;
+            {% comment %} border-radius: 30px; {% endcomment %}
         }
         .btn:hover {
             background-color: #0056b3;
@@ -46,8 +47,8 @@
         nav {
             background-color: #007bff;
             color: #fff;
-            padding: 10px 0;
-            text-align: center;
+            padding: 10px 30px;
+            text-align: left;
         }
         nav a {
             color: #fff;
@@ -61,15 +62,21 @@
         nav a:hover {
             background-color: #0056b3;
         }
+        span {
+            font-size:20px;
+        }
+        a{
+            font-size:20px;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <span>Employee Management System</span>
+        <span><b>Employee Management System</b></span>
         <a th:href="@{/}">Home</a>
     </nav>
     <div class="container">
-        <h2>Login</h2>
+        <h2>Employee Login</h2>
         <form th:action="@{/employee/login}" method="post">
             <div class="form-group">
                 <label for="employeeId">Employee ID:</label>
@@ -81,6 +88,7 @@
             </div>
             <button type="submit" class="btn">Login</button>
         </form>
+        <p th:text="${message}"/>
     </div>
 </body>
 </html>
