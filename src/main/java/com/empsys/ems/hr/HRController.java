@@ -27,7 +27,7 @@ public class HRController {
 
     @PostMapping("/login")
     String hRLoginSubmission(@RequestParam int id, @RequestParam String password,Model model) {
-        Employee emp = hrRepository.getEmployeeById(id);
+        Employee emp = hrRepository.getReferenceById(id);
         if (emp.getDesignation().equals("HR")) {
             return "redirect:/hr/" + emp.getId();
         }
@@ -39,7 +39,7 @@ public class HRController {
 
     @GetMapping("/{id}")
     String dashboard(@PathVariable int id, Model model) {
-        Employee emp = hrRepository.getEmployeeById(id);
+        Employee emp = hrRepository.getReferenceById(id);
         model.addAttribute("emp", emp);
         model.addAttribute("hr_id", id);
         return "hr_templates/dashboard";
@@ -49,13 +49,13 @@ public class HRController {
     @GetMapping("/add_employee/{id}")
     String addEmployee(@PathVariable int id, Model model) {
         model.addAttribute("hr_id", id);
-        model.addAttribute("employee",new Employee(0, null, null, 0, 0));
+        model.addAttribute("employee",new Employee());
         return "hr_templates/add_employee_template";
     }
 
     @PostMapping("/add_employee/{id}")
     String submitEmployee(@ModelAttribute Employee employee, @PathVariable int id) { //, @RequestParam int id, @RequestParam String name, @RequestParam String designation,@RequestParam int salary, @RequestParam float exp) {
-        hrRepository.addEmployee(employee);
+        hrRepository.save(employee);
         return "hr_templates/add_employee_template";
     }
 

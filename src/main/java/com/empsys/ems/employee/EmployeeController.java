@@ -25,7 +25,7 @@ public class EmployeeController {
 
     @PostMapping("/login")
     String employeeLoginSubmission(@RequestParam int id, @RequestParam String password,Model model) {
-        Employee emp = employeeRepository.getEmployeeById(id);
+        Employee emp = employeeRepository.getReferenceById(id); // getEmployeeById(id);
         if (emp.getDesignation().equals("Employee")) {
             return "redirect:/employee/"+emp.getId();
         }
@@ -37,7 +37,7 @@ public class EmployeeController {
 
     @GetMapping("/{id}")
     String dashboard(@PathVariable int id, Model model) {
-        Employee emp = employeeRepository.getEmployeeById(id);
+        Employee emp = employeeRepository.getReferenceById(id);
         model.addAttribute("emp", emp);
         return "employee_templates/dashboard";
     }
