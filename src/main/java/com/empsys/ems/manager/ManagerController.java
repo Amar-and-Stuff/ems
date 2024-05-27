@@ -28,7 +28,7 @@ public class ManagerController {
 
     @PostMapping("/login")
     String hRLoginSubmission(@RequestParam int id, @RequestParam String password,Model model) {
-        Employee emp = managerRepository.getEmployeeById(id);
+        Employee emp = managerRepository.getReferenceById(id);
         if (emp.getDesignation().equals("Manager")) {
             return "redirect:/manager/" + emp.getId();
         }
@@ -40,13 +40,13 @@ public class ManagerController {
 
     @GetMapping("/{id}")
     String dashboard(@PathVariable int id,Model model) {
-        Employee manager=managerRepository.getEmployeeById(id);
+        Employee manager=managerRepository.getReferenceById(id);
         model.addAttribute("manager",manager);
         return "manager_templates/dashboard";
     }
     @GetMapping("/manage/{id}")
     String manage(@PathVariable int id,Model model) {
-        List<Employee> employees=managerRepository.getEmployeeDataAsList();
+        List<Employee> employees=managerRepository.findAll();
         model.addAttribute("manager_id",id);
         model.addAttribute("data",employees);
         return "manager_templates/management";
@@ -56,18 +56,18 @@ public class ManagerController {
     String updateEmployee(@PathVariable int manager_id, @RequestParam(name = "employee_id", required = true) int employee_id, Model model) {
         model.addAttribute("manager_id", manager_id);
         model.addAttribute("employee_id", employee_id);
-        model.addAttribute("employee", managerRepository.getEmployeeById(employee_id));
+        model.addAttribute("employee", managerRepository.getReferenceById(employee_id));
         return "manager_templates/update_employee";
     }
 
     @PostMapping("/manage/{manager_id}/")
         String updateEmployeeSubmisssion(@PathVariable int manager_id, @RequestParam(name = "employee_id", required = true) int employee_id,@ModelAttribute Employee employee,  Model model) {
-            managerRepository.updateEmployeeById(employee_id, employee);
+            managerRepository.save(employee);
             return "manager_templates/update_employee";
         }
     @GetMapping("/manage/delete/{manager_id}/")
     String deleteEmployee(@PathVariable int manager_id,@RequestParam(name="employee_id",required=true) int employee_id,Model model) {
-        managerRepository.deleteEmployeeById(employee_id);
+        managerRepository.deleteById(employee_id);
         model.addAttribute("manager_id", manager_id);
         return "redirect:/manager/manage/"+manager_id;
     }
