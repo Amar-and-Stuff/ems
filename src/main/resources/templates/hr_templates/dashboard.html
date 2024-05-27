@@ -5,40 +5,52 @@
     <title>Employee Details</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        p {
-            margin-bottom: 10px;
-            font-size: 16px;
-            color: #333;
-        }
-        .info {
-            background-color: #f4f4f4;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding:0;
+    }
+    p {
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: #333;
+    }
+    button {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        color:white;
+    }
+    .info {
+        background-color: #f4f4f4;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        display:flex;
+        flex-direction:column;
+        width:100%;
+        align-items:center;
+        box-sizing: border-box;
+            }
         nav {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-right: 1px solid #fff;
-        }
-        nav a:last-child {
-            border-right: none;
-        }
-        nav a:hover {
-            background-color: #0056b3;
-        }
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px 30px;
+          }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-right: 1px solid #fff;
+    }
+    nav a:last-child {
+        border-right: none;
+    }
+    nav a:hover {
+        background-color: #0056b3;
+    }
     </style>
 </head>
 <body>
@@ -46,15 +58,17 @@
         <span>Employee Management System</span>
         <a th:href="@{|/hr/${hr_id}|}">Profile</a>
         <a th:href="@{|/hr/add_employee/${hr_id}|}">Add Employee</a>
-        <a th:href="@{/hr/logout}">Logout</a>
+        
     </nav>
     <div class="info">
+        <img th:src="@{/employee-icon-free-vector.jpg}" th:width="150" th:height="150"/>
         <p th:text="|Employee ID: ${emp.getId()}|" />
         <p th:text="|Name: ${emp.getName()}|" />
         <p th:text="|Designation: ${emp.getDesignation()}|" />
         <p th:text="|Salary: ${emp.getSalary()}|" />
         <p th:text="|Experience: ${emp.getExp()} years|" />
         <p th:text="|Experience: ${emp.getExp()} years|" />
+        <button><a th:href="@{/hr/logout}">Logout</a></button>
     </div>
 </body>
 </html>
