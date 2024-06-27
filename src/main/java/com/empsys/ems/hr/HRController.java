@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.empsys.ems.employee.Employee;
+import com.empsys.ems.employee.EmployeeRepository;
 
 @Controller
 @RequestMapping("/hr")
 public class HRController {
-    private HRRepository hrRepository;
+    private EmployeeRepository hrRepository;
 
-    public HRController(HRRepository hrRepository) {
+    public HRController(EmployeeRepository hrRepository) {
         this.hrRepository = hrRepository;
     }
 
@@ -61,7 +62,6 @@ public class HRController {
 
     @GetMapping("/logout")
     String logout() {
-
         return "redirect:/";
     }
 }

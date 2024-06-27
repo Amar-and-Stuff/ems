@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.empsys.ems.employee.Employee;
+import com.empsys.ems.employee.EmployeeRepository;
 
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
-    private ManagerRepository managerRepository;
-    public ManagerController(ManagerRepository managerRepository) {
+    private EmployeeRepository managerRepository;
+    public ManagerController(EmployeeRepository managerRepository) {
         this.managerRepository = managerRepository;
     }
 
