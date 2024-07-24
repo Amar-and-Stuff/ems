@@ -13,6 +13,7 @@ public class Employee {
     private String designation;
     private int salary;
     private float exp;
+    private String password;
     
 
     public int getId() {
@@ -69,6 +70,16 @@ public class Employee {
     public String toString() {
         return "Employee [ID=" + id + ", name=" + name + ", designation=" + designation + ", salary=" + salary + ", exp="
                 + exp + "]";
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
 }
