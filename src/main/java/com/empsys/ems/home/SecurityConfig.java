@@ -35,24 +35,24 @@ public class SecurityConfig {
                 authorize -> authorize
                 // maybe problem lies while loading the user data to page
                     //.requestMatchers("/h2-console/**").permitAll()
+                    .requestMatchers("/images/**").permitAll()
+                    .requestMatchers("/login","/","/images/**","/logout").permitAll()
                     .requestMatchers("/hr/add_employee").hasAuthority("HR")
                     .requestMatchers("/manager/**").hasAuthority("MANAGER")
                     .requestMatchers("/profile").authenticated()
-                    .requestMatchers("/login","/").permitAll()
-                    // .requestMatchers("/**").permitAll()
             )
             .formLogin(form -> form
                 .loginPage("/login")
-                // .loginProcessingUrl("/login_processing")
-                // .failureForwardUrl("/")
-                .defaultSuccessUrl("/profile")
-                .successForwardUrl("/profile")
+                .defaultSuccessUrl("/profile",true)
                 .usernameParameter("id")
                 .passwordParameter("password")
                 .permitAll()
                 )
-            // .formLogin(Customizer.withDefaults())
-            .logout(Customizer.withDefaults());
+            .logout(lo->lo
+                .clearAuthentication(true)
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                );
 
 
         // allow all requests

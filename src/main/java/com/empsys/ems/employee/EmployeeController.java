@@ -1,27 +1,24 @@
 package com.empsys.ems.employee;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class EmployeeController {
     private EmployeeRepository employeeRepository;
-    private AuthenticationManager authenticationManager;
 
-    public EmployeeController(EmployeeRepository employeeRepository, AuthenticationManager authenticationManager) {
+    public EmployeeController(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.authenticationManager = authenticationManager;
     }
 
     @GetMapping("/") 
-    String homePage() {
+    String homePage(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("is authenticated "+authentication.isAuthenticated() + " as " + authentication.getName());
+        model.addAttribute("name", authentication.getName());
         return "homepage";
     }
 
@@ -29,20 +26,6 @@ public class EmployeeController {
     @GetMapping("/login")
     String employeeLogin() {
         return "loginpage";
-    }
-
-    @PostMapping("/login")
-    String employeeLoginSubmission(@RequestParam int id, @RequestParam String password) {
-        System.out.println("What is even happening.");
-        Authentication authentication = authenticationManager
-        .authenticate(new UsernamePasswordAuthenticationToken("3","1234"));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        if (authentication.isAuthenticated()) {
-            System.out.println("success");
-        } else {
-            System.out.println("fail");
-        }
-        return "redirect:/profile";
     }
 
     @GetMapping("/profile")
@@ -54,8 +37,8 @@ public class EmployeeController {
         return "profile";
     }
 
-    @GetMapping("/logout")
-    String logout() {
-        return "redirect:/";
-    }
+    // @GetMapping("/logout")
+    // String logout() {
+    //     return "redirect:/";
+    // }
 }

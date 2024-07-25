@@ -71,7 +71,8 @@
             <a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a>
         </div>
         <div class="nav-right">
-            <a th:href="@{/login}">Login</a>
+            <a th:if="${name == 'anonymousUser'}" th:href="@{/login}">Login</a>
+            <a th:if="${name != 'anonymousUser'}" th:href="@{/logout}">Logout</a>
         </div>
     </nav>
 </body>
