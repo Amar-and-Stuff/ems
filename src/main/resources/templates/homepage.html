@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title style="font-size:20px">Employee Management System</title>
+    <title>Employee Management System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,34 +13,57 @@
         nav {
             background-color: #007bff;
             color: #fff;
-            padding: 10px 30px;
-            text-align: left;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-left,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        .nav-left span {
+            font-size: 24px;
+            font-weight: bold;
         }
         nav a {
             color: #fff;
             text-decoration: none;
             padding: 10px 20px;
-            margin-right:0px;
-            border-right: 1px solid #fff;
-        }
-        nav a:last-child {
-            border-right: none;
+            margin-left: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 4px;
         }
         nav a:hover {
             background-color: #0056b3;
+            color: #f0f0f0;
         }
-        a {
-            font-size:20px
-        }
-        span {
-            font-size:20px;
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-left,
+            .nav-right {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav a {
+                margin: 5px 0;
+            }
         }
     </style>
 </head>
 <body>
     <nav>
-        <span><b>Employee Management System</b></span>
-        <a th:href="@{/login}">Login</a>
+        <div class="nav-left">
+            <span><a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a></span>
+        </div>
+        <div class="nav-right">
+            <a th:href="@{/login}">Login</a>
+        </div>
     </nav>
 </body>
 </html>

@@ -11,6 +11,40 @@
             margin: 0;
             padding: 0;
         }
+        nav {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-left,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        .nav-left a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 0;
+        }
+        .nav-left span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 4px;
+        }
+        nav a.hvr:hover {
+            background-color: #0056b3;
+            color: #f0f0f0;
+        }
         .container {
             max-width: 400px;
             margin: 50px auto;
@@ -20,7 +54,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .form-group {
-            margin-right:20px;
             margin-bottom: 20px;
         }
         .form-group label {
@@ -28,52 +61,39 @@
             margin-bottom: 5px;
         }
         .form-group input {
-            width: 100%;
-            padding: 8px;
+            width: 98%;
+            padding-top: 10px;
+            padding-bottom: 10px;
             border: 1px solid #ccc;
-            border-radius: 3px;
+            border-radius: 4px;
+            font-size: 16px;
         }
         .btn {
             display: inline-block;
-            padding: 8px 16px;
+            width: 100%;
+            padding: 10px 0;
             background-color: #007bff;
             color: #fff;
             text-decoration: none;
-            border-radius: 30px;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
         }
         .btn:hover {
             background-color: #0056b3;
-        }
-        nav {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 30px;
-            text-align: left;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-right: 1px solid #fff;
-        }
-        nav a:last-child {
-            border-right: none;
-        }
-        nav a:hover {
-            background-color: #0056b3;
-        }
-        span {
-            font-size:20px;
-        }
-        a{
-            font-size:20px;
         }
     </style>
 </head>
 <body>
     <nav>
-        <span><b>Employee Management System</b></span>
-        <a th:href="@{/}">Home</a>
+        <div class="nav-left">
+            <span><a href="/" style="margin-left: 0;">Employee Management System</a></span>
+        </div>
+        <div class="nav-right">
+            <a class="hvr" th:href="@{/}">Home</a>
+        </div>
     </nav>
     <div class="container">
         <h2>Employee Login</h2>

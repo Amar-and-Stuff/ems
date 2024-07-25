@@ -51,21 +51,22 @@ public class SecurityConfig {
                 .passwordParameter("password")
                 .permitAll()
                 )
+            // .formLogin(Customizer.withDefaults())
             .logout(Customizer.withDefaults());
 
 
         // allow all requests
         // http
         //     .csrf(
-        //         (protection) -> protection
-        //             .ignoringRequestMatchers(toH2Console()) 
+        //         (protection) -> protection.disable()
+        //             // .ignoringRequestMatchers(toH2Console()) 
         //     )
         //     .headers((header) -> header
-        //         .frameOptions().sameOrigin()
+        //         .frameOptions(frame -> frame.sameOrigin())
         //     )
         //     .authorizeHttpRequests(
         //         authorize -> authorize
-        //             .requestMatchers(toH2Console()).permitAll()
+        //             .requestMatchers("/h2-console").permitAll()
         //             .requestMatchers("/**").permitAll()
         //     );
 
