@@ -45,6 +45,7 @@ public class ManagerController {
     @PostMapping("/update")
     String updateEmployeeSubmisssion(@RequestParam(name = "employee_id", required = true) int employee_id, @ModelAttribute Employee employee,
             Model model) {
+        employee.setPassword(managerRepository.getReferenceById(employee_id).getPassword());
         managerRepository.save(employee);
         return "redirect:/manager/manage";
     }
