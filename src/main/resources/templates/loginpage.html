@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,32 +8,30 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
+
         nav {
             background-color: #007bff;
             color: #fff;
-            padding: 15px 30px;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+
         .nav-left,
         .nav-right {
             display: flex;
             align-items: center;
         }
-        .nav-left a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 0;
-        }
-        .nav-left span {
+
+        .nav-left {
             font-size: 24px;
             font-weight: bold;
         }
+
         nav a {
             color: #fff;
             text-decoration: none;
@@ -40,11 +39,14 @@
             margin-left: 20px;
             transition: background-color 0.3s ease, color 0.3s ease;
             border-radius: 4px;
+            cursor: pointer;
         }
-        nav a.hvr:hover {
+
+        .nav-right a:hover {
             background-color: #0056b3;
             color: #f0f0f0;
         }
+
         .container {
             max-width: 400px;
             margin: 50px auto;
@@ -53,13 +55,16 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
         }
+
         .form-group input {
             width: 98%;
             padding-top: 10px;
@@ -68,6 +73,7 @@
             border-radius: 4px;
             font-size: 16px;
         }
+
         .btn {
             display: inline-block;
             width: 100%;
@@ -81,19 +87,21 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         .btn:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="nav-left">
-            <span><a href="/" style="margin-left: 0;">Employee Management System</a></span>
+            <a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a>
         </div>
-        <div class="nav-right">
-            <a class="hvr" th:href="@{/}">Home</a>
-        </div>
+        <!--<div class="nav-right">
+            <a th:href="@{/login}">Login</a>
+        </div>-->
     </nav>
     <div class="container">
         <h2>Employee Login</h2>
@@ -108,7 +116,8 @@
             </div>
             <button type="submit" class="btn">Login</button>
         </form>
-        <p th:text="${message}"/>
+        <p th:text="${message}" />
     </div>
 </body>
+
 </html>

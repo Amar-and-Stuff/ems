@@ -1,85 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Registration</title>
+    <title>Employee Update</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            padding: 0;
         }
+
+        nav {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .nav-right a:hover {
+            background-color: #0056b3;
+            color: #f0f0f0;
+        }
+
         .container {
-            max-width: 500px;
+            max-width: 400px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
         }
+
         .form-group input {
-            width: 100%;
-            padding: 8px;
+            width: 98%;
+            padding-top: 10px;
+            padding-bottom: 10px;
             border: 1px solid #ccc;
-            border-radius: 3px;
+            border-radius: 4px;
+            font-size: 16px;
         }
-        .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
+
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 3px;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        nav {
-            background-color: #007bff;
-            color: #fff;
+            width: 100%;
             padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
+            background-color: #007bff;
             color: #fff;
             text-decoration: none;
-            padding: 10px 20px;
-            border-right: 1px solid #fff;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
         }
-        nav a:last-child {
-            border-right: none;
-        }
-        nav a:hover {
+
+        .btn:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
-     
     <nav>
-        <span>Employee Management System</span>
-        <a th:href="@{|/profile|}">Profile</a>
-        <a th:href="@{/logout}">Logout</a>
+        <div class="nav-left">
+            <a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a>
+        </div>
+        <div class="nav-right">
+            <a th:href="@{|/profile|}">Profile</a>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
     </nav>
     <div class="container">
         <h2>Employee Update</h2>
-        <form th:action="@{|/manager/update?employee_id=${employee_id}|}" th:object="${employee}" method="post"> 
+        <form th:action="@{|/manager/update?employee_id=${employee_id}|}" th:object="${employee}" method="post">
             <div class="form-group">
                 <label for="employeeId">Employee ID:</label>
                 <input type="text" id="employeeId" name="id" th:field="*{id}" required>
@@ -104,4 +131,5 @@
         </form>
     </div>
 </body>
+
 </html>

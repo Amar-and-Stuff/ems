@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Employee Details</title>
@@ -7,13 +8,68 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
+
+        nav {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .nav-right a:hover {
+            background-color: #0056b3;
+            color: #f0f0f0;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 75px;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
         p {
             margin-bottom: 10px;
             font-size: 16px;
             color: #333;
         }
+
         .info {
             background-color: #f4f4f4;
             padding: 10px 20px;
@@ -21,87 +77,68 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-        nav {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 0;
+
+        table {
+            width: 75%;
+            border-collapse: collapse;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        th,
+        td {
+            padding: 8px;
             text-align: center;
         }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-right: 1px solid #fff;
+
+        tbody tr {
+            border: 1px solid #ddd;
         }
-        nav a:last-child {
-            border-right: none;
-        }
-        nav a:hover {
-            background-color: #0056b3;
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
-<body><!DOCTYPE html>
-    <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>ArrayList Example</title>
-        <style>
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            th, td {
-                padding: 8px;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-            }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            button {
-                display: inline-block;
-                padding: 8px 16px;
-                background-color: #007bff;
-                color: #fff;
-                text-decoration: none;
-            }
-            a{
-                text-decoration:none;
-                color:white;
-            }
-            </style>
-    </head>
-    <body>
-        
+
+<body>
     <nav>
-        <span>Employee Management System</span>
-        <a th:href="@{|/profile|}">Profile</a>
-        <a th:href="@{/logout}">Logout</a>
+        <div class="nav-left">
+            <a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a>
+        </div>
+        <div class="nav-right">
+            <a th:href="@{|/profile|}">Profile</a>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
     </nav>
-    <h1 style="text-align:center;">Manager List</h1>
+    <h1 style="text-align:center;">Employee Data</h1>
     <table>
         <thead>
             <tr>
-                <th>Name</th>
                 <th>ID</th>
+                <th>Name</th>
                 <th>Designation</th>
                 <th>Salary</th>
                 <th>Experience</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="m : ${data}">
-                <td th:text="${m.name}"></td>
-                <td th:text="${m.id}"></td>
-                <td th:text="${m.designation}"></td>
-                <td th:text="${m.salary}"></td>
-                <td th:text="${m.exp}"></td>
-                <td><button><a th:href="@{|/manager/update?employee_id=${m.id}|}">Edit</a></button></td>
-                <td><button><a th:href="@{|/manager/delete?employee_id=${m.id}|}">Delete</a></button></td>
+                <td th:text="${m.id}">1</td>
+                <td th:text="${m.name}">test</td>
+                <td th:text="${m.designation}">tester</td>
+                <td th:text="${m.salary}">nill</td>
+                <td th:text="${m.exp}">-1</td>
+                <td><button class="btn"><a th:href="@{|/manager/update?employee_id=${m.id}|}">Edit</a></button></td>
+                <td><button class="btn"><a th:href="@{|/manager/delete?employee_id=${m.id}|}">Delete</a></button></td>
             </tr>
         </tbody>
     </table>
-    </body>
-    </html>
 </body>
+
+</html>
+</body>
+
 </html>

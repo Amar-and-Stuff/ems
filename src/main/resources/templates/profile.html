@@ -1,72 +1,110 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Employee Details</title>
-    <style>body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding:0;
-    }
-    p {
-        margin-bottom: 10px;
-        font-size: 16px;
-        color: #333;
-    }
-    button {
-        display: inline-block;
-        padding: 8px 16px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        color:white;
-    }
-    .info {
-        background-color: #f4f4f4;
-        padding: 10px 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        display:flex;
-        flex-direction:column;
-        width:100%;
-        align-items:center;
-        box-sizing: border-box;
-            }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
         nav {
-                background-color: #007bff;
-                color: #fff;
-                padding: 10px 30px;
-          }
-    nav a {
-        color: #fff;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-right: 1px solid #fff;
-    }
-    nav a:last-child {
-        border-right: none;
-    }
-    nav a:hover {
-        background-color: #0056b3;
-    }
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .nav-right a:hover {
+            background-color: #0056b3;
+            color: #f0f0f0;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 120px;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .info {
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            box-sizing: border-box;
+        }
     </style>
 </head>
+
 <body>
     <nav>
-        <span>Employee Management System</span>
-        <a th:if="${emp.getDesignation() == 'HR'}" th:href="@{/hr/add_employee}">Recruit</a>
-        <a th:if="${emp.getDesignation() == 'MANAGER'}" th:href="@{/manager/manage}">Manage</a>
+        <div class="nav-left">
+            <a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a>
+        </div>
+        <div class="nav-right">
+            <a th:if="${emp.getDesignation() == 'HR'}" th:href="@{/hr/add_employee}">Recruit</a>
+            <a th:if="${emp.getDesignation() == 'MANAGER'}" th:href="@{/manager/manage}">Manage</a>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
     </nav>
     <div class="info">profile
-        <img th:src="@{/employee-icon.jpg}" th:width="150" th:height="150"/>
+        <img th:src="@{/employee-icon.jpg}" th:width="150" th:height="150" />
         <p th:text="|Employee ID: ${emp.getId()}|" />
         <p th:text="|Name: ${emp.getName()}|" />
         <p th:text="|Designation: ${emp.getDesignation()}|" />
         <p th:text="|Salary: ${emp.getSalary()}|" />
         <p th:text="|Experience: ${emp.getExp()} years|" />
         <p th:text="|Experience: ${emp.getExp()} years|" />
-        <button><a th:href="@{/logout}">Logout</a></button>
     </div>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,23 +11,27 @@
             margin: 0;
             padding: 0;
         }
+
         nav {
             background-color: #007bff;
             color: #fff;
-            padding: 15px 30px;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+
         .nav-left,
         .nav-right {
             display: flex;
             align-items: center;
         }
-        .nav-left span {
+
+        .nav-left {
             font-size: 24px;
             font-weight: bold;
         }
+
         nav a {
             color: #fff;
             text-decoration: none;
@@ -34,13 +39,16 @@
             margin-left: 20px;
             transition: background-color 0.3s ease, color 0.3s ease;
             border-radius: 4px;
+            cursor: pointer;
         }
-        nav a:hover {
+
+        .nav-right a:hover {
             background-color: #0056b3;
             color: #f0f0f0;
         }
+
         /* Responsive Design */
-        @media (max-width: 600px) {
+        /*@media (max-width: 600px) {
             nav {
                 flex-direction: column;
                 align-items: flex-start;
@@ -53,17 +61,19 @@
             nav a {
                 margin: 5px 0;
             }
-        }
+        }*/
     </style>
 </head>
+
 <body>
     <nav>
         <div class="nav-left">
-            <span><a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a></span>
+            <a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a>
         </div>
         <div class="nav-right">
             <a th:href="@{/login}">Login</a>
         </div>
     </nav>
 </body>
+
 </html>
