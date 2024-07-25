@@ -74,13 +74,12 @@
      
     <nav>
         <span>Employee Management System</span>
-        <a th:href="@{|/manager/${manager_id}|}">Profile</a>
-        <a th:href="@{|/manager/manage/${manager_id}|}">Manage</a>
-        <a th:href="@{/manager/logout}">Logout</a>
+        <a th:href="@{|/profile|}">Profile</a>
+        <a th:href="@{/logout}">Logout</a>
     </nav>
     <div class="container">
-        <h2>Employee Registration</h2>
-        <form th:action="@{|/manager/manage/${manager_id}/?employee_id=${employee_id}|}" th:object="${employee}" method="post"> 
+        <h2>Employee Update</h2>
+        <form th:action="@{|/manager/update?employee_id=${employee_id}|}" th:object="${employee}" method="post"> 
             <div class="form-group">
                 <label for="employeeId">Employee ID:</label>
                 <input type="text" id="employeeId" name="id" th:field="*{id}" required>

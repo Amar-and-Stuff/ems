@@ -55,18 +55,18 @@
 <body>
     <nav>
         <span>Employee Management System</span>
-        <a th:href="@{/employee/{id}(id=${emp.getId()})}">Profile</a>
-        
+        <a th:if="${emp.getDesignation() == 'HR'}" th:href="@{/hr/add_employee}">Recruit</a>
+        <a th:if="${emp.getDesignation() == 'MANAGER'}" th:href="@{/manager/manage}">Manage</a>
     </nav>
-    <div class="info">
-        <img th:src="@{/employee-icon-free-vector.jpg}" th:width="150" th:height="150"/>
+    <div class="info">profile
+        <img th:src="@{/employee-icon.jpg}" th:width="150" th:height="150"/>
         <p th:text="|Employee ID: ${emp.getId()}|" />
         <p th:text="|Name: ${emp.getName()}|" />
         <p th:text="|Designation: ${emp.getDesignation()}|" />
         <p th:text="|Salary: ${emp.getSalary()}|" />
         <p th:text="|Experience: ${emp.getExp()} years|" />
         <p th:text="|Experience: ${emp.getExp()} years|" />
-        <button><a th:href="@{/employee/logout}">Logout</a></button>
+        <button><a th:href="@{/logout}">Logout</a></button>
     </div>
 </body>
 </html>

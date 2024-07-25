@@ -75,9 +75,8 @@
         
     <nav>
         <span>Employee Management System</span>
-        <a th:href="@{|/manager/${manager_id}|}">Profile</a>
-        <a th:href="@{|/manager/manage/${manager_id}|}">Manage</a>
-        <a th:href="@{/manager/logout}">Logout</a>
+        <a th:href="@{|/profile|}">Profile</a>
+        <a th:href="@{/logout}">Logout</a>
     </nav>
     <h1 style="text-align:center;">Manager List</h1>
     <table>
@@ -97,8 +96,8 @@
                 <td th:text="${m.designation}"></td>
                 <td th:text="${m.salary}"></td>
                 <td th:text="${m.exp}"></td>
-                <td><button><a th:href="@{|/manager/manage/${manager_id}/?employee_id=${m.id}|}">Edit</a></button></td>
-                <td><button><a th:href="@{|/manager/manage/delete/${manager_id}/?employee_id=${m.id}|}">Delete</a></button></td>
+                <td><button><a th:href="@{|/manager/update?employee_id=${m.id}|}">Edit</a></button></td>
+                <td><button><a th:href="@{|/manager/delete?employee_id=${m.id}|}">Delete</a></button></td>
             </tr>
         </tbody>
     </table>

@@ -20,7 +20,7 @@ public class EmployeeController {
         this.authenticationManager = authenticationManager;
     }
 
-    @GetMapping("") 
+    @GetMapping("/") 
     String homePage() {
         return "homepage";
     }
@@ -36,7 +36,7 @@ public class EmployeeController {
         System.out.println("What is even happening.");
         Authentication authentication = authenticationManager
         .authenticate(new UsernamePasswordAuthenticationToken("3","1234"));
-
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         if (authentication.isAuthenticated()) {
             System.out.println("success");
         } else {
@@ -51,7 +51,6 @@ public class EmployeeController {
         int id = Integer.parseInt(auth.getName());
         Employee emp = employeeRepository.getReferenceById(id);
         model.addAttribute("emp", emp);
-        System.out.println("Logging here for username which will be a number anyway " + auth.getName());
         return "profile";
     }
 
