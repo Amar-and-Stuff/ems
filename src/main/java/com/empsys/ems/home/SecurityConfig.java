@@ -36,6 +36,7 @@ public class SecurityConfig {
                 // maybe problem lies while loading the user data to page
                     //.requestMatchers("/h2-console/**").permitAll()
                     .requestMatchers("/images/**").permitAll()
+                    .requestMatchers("/css/**").permitAll()
                     .requestMatchers("/login","/","/images/**","/logout").permitAll()
                     .requestMatchers("/hr/add_employee").hasAuthority("HR")
                     .requestMatchers("/manager/**").hasAuthority("MANAGER")

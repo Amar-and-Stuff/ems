@@ -1,75 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Management System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-left,
-        .nav-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-left {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin-left: 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .nav-right a:hover {
-            background-color: #0056b3;
-            color: #f0f0f0;
-        }
-
-        /* Responsive Design */
-        /*@media (max-width: 600px) {
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .nav-left,
-            .nav-right {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            nav a {
-                margin: 5px 0;
-            }
-        }*/
-    </style>
+    <link rel="stylesheet" th:href="@{css/style.css}" href="../static/css/style.css">
 </head>
 
 <body>
     <nav>
         <div class="nav-left">
-            <a style="margin-left: 0px;" th:href="@{/}">Employee Management System</a>
+            <a th:href="@{/}">Employee Management System</a>
         </div>
         <div class="nav-right">
             <a th:if="${name == 'anonymousUser'}" th:href="@{/login}">Login</a>
